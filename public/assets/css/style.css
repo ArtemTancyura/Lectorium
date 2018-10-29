@@ -1,0 +1,23 @@
+
+.container{
+    width: 80%;
+    height: 275px;
+    margin: 0 auto;
+    border: 1px solid gray;
+    padding: 20px;
+    border-radius: 20px;
+}
+
+.container img{
+    width: 40%;
+    float: left;
+    margin-right: 15px;
+}
+
+h4{
+    color: gray;
+}
+h4:last-of-type{
+    color: black;
+}
+

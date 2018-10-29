@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Welcome to Symfony!</title>
+
+    {% block stylesheets %}
+
+        <link href="assets/css/style.css" rel="stylesheet" />
+
+    {% endblock %}
+
+
+
+</head>
+<body>
+
+    <div class="container">
+
+        <img alt="articleImg" src="{{ img }}"/>
+
+        <div class="text-article">
+
+            <h2 class="title1"> {{ title }} / {{ title2 }}</h2>
+
+            <h4 class="author1"> Article written by/{{ author }} {{ name }}, {{ date }}</h4>
+
+            <p> {{ article }} </p>
+
+            <h4 class="time1"> Time for creating article/ {{ event2 }}: {{ event }} ms</h4>
+
+        </div>
+
+    </div>
+
+    {% block javascripts %}
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+        <script src="assets/js/main.js"></script>
+
+    {% endblock %}
+</body>
+</html>
+
