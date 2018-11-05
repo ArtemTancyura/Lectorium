@@ -1,0 +1,23 @@
+{% extends 'home/home.html.twig' %}
+
+{% block body %}
+
+<div class="page-form login">
+
+    <div class="container">
+
+        <h2>Радий знову тебе бачити</h2>
+
+        <p>Пройди процедуру логінізації і нічого не зміниться, але ти нам важливий!</p>
+
+        {{ form(form) }}
+
+
+        <p> Не зареєстрований? </p>
+        <a href="/registration">На сторінку реєстрації</a> <a href="/home">Повернутися на головну</a>
+    </div>
+
+</div>
+
+
+{% endblock %}
