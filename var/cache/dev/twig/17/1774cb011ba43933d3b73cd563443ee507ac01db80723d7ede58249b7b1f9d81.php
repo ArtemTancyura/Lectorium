@@ -55,18 +55,31 @@ class __TwigTemplate_93ab1ced2d6d67aef429fb1a29d323734f5efd9ba962822cc848867fa6c
 
     <div class=\"container\">
 
-        <h2>Радий знову тебе бачити</h2>
+        <h2>Hello!</h2>
 
-        <p>Пройди процедуру логінізації і нічого не зміниться, але ти нам важливий!</p>
+        <p>Log in and enjoy my website!</p>
 
-        ";
+        <form action=\"";
         // line 13
-        echo         $this->env->getRuntime('Symfony\Component\Form\FormRenderer')->renderBlock((isset($context["form"]) || array_key_exists("form", $context) ? $context["form"] : (function () { throw new Twig_Error_Runtime('Variable "form" does not exist.', 13, $this->source); })()), 'form');
+        echo $this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("app_user_login");
+        echo "\" method=\"post\">
+
+            ";
+        // line 15
+        echo $this->env->getRuntime('Symfony\Component\Form\FormRenderer')->searchAndRenderBlock((isset($context["form"]) || array_key_exists("form", $context) ? $context["form"] : (function () { throw new Twig_Error_Runtime('Variable "form" does not exist.', 15, $this->source); })()), 'widget');
         echo "
 
+            <input type=\"submit\" class=\"button\" value=\"Login\" /><br>
 
-        <p> Не зареєстрований? </p>
-        <a href=\"/registration\">На сторінку реєстрації</a> <a href=\"/home\">Повернутися на головну</a>
+        </form>
+
+        <p> More options </p>
+        <a href=\"";
+        // line 22
+        echo $this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("app_user_register");
+        echo "\">Registration </a> <a href=\"";
+        echo $this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("app_home_home");
+        echo "\">Main page</a>
     </div>
 
 </div>
@@ -93,7 +106,7 @@ class __TwigTemplate_93ab1ced2d6d67aef429fb1a29d323734f5efd9ba962822cc848867fa6c
 
     public function getDebugInfo()
     {
-        return array (  64 => 13,  53 => 4,  44 => 3,  15 => 1,);
+        return array (  79 => 22,  69 => 15,  64 => 13,  53 => 4,  44 => 3,  15 => 1,);
     }
 
     public function getSourceContext()
@@ -106,15 +119,20 @@ class __TwigTemplate_93ab1ced2d6d67aef429fb1a29d323734f5efd9ba962822cc848867fa6c
 
     <div class=\"container\">
 
-        <h2>Радий знову тебе бачити</h2>
+        <h2>Hello!</h2>
 
-        <p>Пройди процедуру логінізації і нічого не зміниться, але ти нам важливий!</p>
+        <p>Log in and enjoy my website!</p>
 
-        {{ form(form) }}
+        <form action=\"{{ path(\"app_user_login\") }}\" method=\"post\">
 
+            {{ form_widget(form) }}
 
-        <p> Не зареєстрований? </p>
-        <a href=\"/registration\">На сторінку реєстрації</a> <a href=\"/home\">Повернутися на головну</a>
+            <input type=\"submit\" class=\"button\" value=\"Login\" /><br>
+
+        </form>
+
+        <p> More options </p>
+        <a href=\"{{ path('app_user_register') }}\">Registration </a> <a href=\"{{ path('app_home_home') }}\">Main page</a>
     </div>
 
 </div>

@@ -4,10 +4,12 @@ namespace App\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Validator\Constraints as Assert;
+use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
 
 /**
  * @ORM\Entity
  * @ORM\Table(name="user")
+ * @UniqueEntity("email")
  */
 class User
 {
@@ -20,11 +22,10 @@ class User
 
 
     /**
-     * @var string
+     * @var string $email
      *
-     * @Assert\NotBlank()
-     * @Assert\Length(max="30", min="3", maxMessage="Too much", minMessage="Not enough")
-     * @ORM\Column(type="string", length=190)
+     * @ORM\Column(name="email", type="string", length=255, unique=true)
+     * @Assert\Email()
      */
     protected $email;
 
@@ -32,7 +33,7 @@ class User
      * @var string
      *
      * @Assert\NotBlank()
-     * @Assert\Length(max="20", min="5", maxMessage="Too much", minMessage="Not enough")
+     * @Assert\Length(min="5", maxMessage="Too much", minMessage="Not enough")
      * @ORM\Column(type="string", length=190)
      */
     protected $pass;
@@ -41,7 +42,7 @@ class User
      * @var string
      *
      * @Assert\NotBlank()
-     * @Assert\Length(max="20", min="3", maxMessage="Too much", minMessage="Not enough")
+     * @Assert\Length(min="3", maxMessage="Too much", minMessage="Not enough")
      * @ORM\Column(type="string", length=190)
      */
     protected $firstName;
@@ -50,7 +51,7 @@ class User
      * @var string
      *
      * @Assert\NotBlank()
-     * @Assert\Length(max="20", min="3", maxMessage="Too much", minMessage="Not enough")
+     * @Assert\Length(min="3", maxMessage="Too much", minMessage="Not enough")
      * @ORM\Column(type="string", length=190)
      */
     protected $lastName;

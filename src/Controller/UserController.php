@@ -3,74 +3,72 @@
 namespace App\Controller;
 
 use App\Entity\User;
-use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+use App\Form\RegistrationType;
+use App\Form\LoginType;
+use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Routing\Annotation\Route;
-use Symfony\Component\Form\Extension\Core\Type\EmailType;
-use Symfony\Component\Form\Extension\Core\Type\TextType;
-use Symfony\Component\Form\Extension\Core\Type\RepeatedType;
-use Symfony\Component\Form\Extension\Core\Type\SubmitType;
 
-class UserController extends AbstractController
+class UserController extends Controller
 {
     /**
-     * @Route("/registration")
+     * @param Request $request
+     * @Route("/registration", methods={"GET", "POST"})
+     * @return \Symfony\Component\HttpFoundation\Response
      */
-
-    public function register(Request $request)
+    public function registerAction(Request $request)
     {
 
         $user = new User();
 
-        $form = $this->createFormBuilder($user)
-            ->add('email', EmailType::class)
-            ->add('firstName', TextType::class)
-            ->add('lastName', TextType::class)
-            ->add('pass', RepeatedType::class)
-            ->add('save', SubmitType::class, array('label' => 'Registration'))
-            ->getForm();
 
-        $form->handleRequest($request);
+        $form = $this->createForm(RegistrationType::class, $user);
 
-        if ($form->isSubmitted() && $form->isValid()) {
-            $user = $form->getData();
-             $em = $this->getDoctrine()->getManager();
-             $em->persist($user);
-             $em->flush();
+        if ($request->getMethod() == Request::METHOD_POST) {
 
-            return $this->render('home/home.html.twig');
+            $form->handleRequest($request);
+
+            $em = $this->getDoctrine()->getManager();
+            $em->persist($user);
+            $em->flush();
+
+            return $this->redirectToRoute('app_home_home');
+
         }
 
-        return $this->render('forms/register.html.twig', array(
+        return $this->render('forms/register.html.twig', [
             'form' => $form->createView(),
-        ));
+        ]);
     }
 
 
     /**
-     * @Route("/login")
+     * @param Request $request
+     * @Route("/login", methods={"GET", "POST"})
+     * @return \Symfony\Component\HttpFoundation\Response
      */
-
-    public function login(Request $request)
+    public function loginAction(Request $request)
     {
 
         $user = new User();
 
-        $form = $this->createFormBuilder($user)
-            ->add('email', EmailType::class)
-            ->add('pass', RepeatedType::class)
-            ->add('save', SubmitType::class, array('label' => 'Registration'))
-            ->getForm();
+        $form = $this->createForm(LoginType::class, $user);
 
-        $form->handleRequest($request);
+        if ($request->getMethod() == Request::METHOD_POST) {
 
-        if ($form->isSubmitted() && $form->isValid()) {
+            $form->handleRequest($request);
 
-            return $this->render('home/home.html.twig');
+            $em = $this->getDoctrine()->getManager();
+            $em->persist($user);
+            $em->flush();
+
+            return $this->redirectToRoute('app_home_home');
+
         }
 
-        return $this->render('forms/login.html.twig', array(
+        return $this->render('forms/login.html.twig', [
             'form' => $form->createView(),
-        ));
+        ]);
+
     }
 }

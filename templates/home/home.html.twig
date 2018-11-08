@@ -17,7 +17,7 @@
     <div class="container">
 
         <div class="nav">
-            <a href="/registration">Зареєструватися</a> <a href="/login">Увійти</a>
+            <a href="{{ path('app_user_register') }}">Registration </a> <a href="{{ path('app_user_login') }}">Login</a>
         </div>
 
         <img alt="articleImg" src="{{ img }}"/>
@@ -36,12 +36,6 @@
 
     </div>
 
-
-    {% block javascripts %}
-        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-        <script src="assets/js/main.js"></script>
-
-    {% endblock %}
 {% endblock %}
 </html>
 

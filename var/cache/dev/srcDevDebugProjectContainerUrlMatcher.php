@@ -50,13 +50,27 @@ class srcDevDebugProjectContainerUrlMatcher extends Symfony\Bundle\FrameworkBund
 
         // app_user_register
         if ('/registration' === $pathinfo) {
-            return array (  '_controller' => 'App\\Controller\\UserController::register',  '_route' => 'app_user_register',);
+            $ret = array (  '_controller' => 'App\\Controller\\UserController::registerAction',  '_route' => 'app_user_register',);
+            if (!in_array($canonicalMethod, array('GET', 'POST'))) {
+                $allow = array_merge($allow, array('GET', 'POST'));
+                goto not_app_user_register;
+            }
+
+            return $ret;
         }
+        not_app_user_register:
 
         // app_user_login
         if ('/login' === $pathinfo) {
-            return array (  '_controller' => 'App\\Controller\\UserController::login',  '_route' => 'app_user_login',);
+            $ret = array (  '_controller' => 'App\\Controller\\UserController::loginAction',  '_route' => 'app_user_login',);
+            if (!in_array($canonicalMethod, array('GET', 'POST'))) {
+                $allow = array_merge($allow, array('GET', 'POST'));
+                goto not_app_user_login;
+            }
+
+            return $ret;
         }
+        not_app_user_login:
 
         if (0 === strpos($pathinfo, '/_')) {
             // _twig_error_test

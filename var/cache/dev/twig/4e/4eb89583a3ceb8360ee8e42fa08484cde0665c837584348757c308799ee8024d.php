@@ -16,7 +16,6 @@ class __TwigTemplate_160fe69a14322eaf1e45fd7997448c05c9c2779877ec7d2b5e73fea7651
         $this->blocks = array(
             'stylesheets' => array($this, 'block_stylesheets'),
             'body' => array($this, 'block_body'),
-            'javascripts' => array($this, 'block_javascripts'),
         );
     }
 
@@ -45,7 +44,7 @@ class __TwigTemplate_160fe69a14322eaf1e45fd7997448c05c9c2779877ec7d2b5e73fea7651
 ";
         // line 15
         $this->displayBlock('body', $context, $blocks);
-        // line 46
+        // line 40
         echo "</html>
 
 ";
@@ -93,7 +92,12 @@ class __TwigTemplate_160fe69a14322eaf1e45fd7997448c05c9c2779877ec7d2b5e73fea7651
     <div class=\"container\">
 
         <div class=\"nav\">
-            <a href=\"/registration\">Зареєструватися</a> <a href=\"/login\">Увійти</a>
+            <a href=\"";
+        // line 20
+        echo $this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("app_user_register");
+        echo "\">Registration </a> <a href=\"";
+        echo $this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("app_user_login");
+        echo "\">Login</a>
         </div>
 
         <img alt=\"articleImg\" src=\"";
@@ -135,31 +139,7 @@ class __TwigTemplate_160fe69a14322eaf1e45fd7997448c05c9c2779877ec7d2b5e73fea7651
 
     </div>
 
-
-    ";
-        // line 40
-        $this->displayBlock('javascripts', $context, $blocks);
-        
-        $__internal_319393461309892924ff6e74d6d6e64287df64b63545b994e100d4ab223aed02->leave($__internal_319393461309892924ff6e74d6d6e64287df64b63545b994e100d4ab223aed02_prof);
-
-        
-        $__internal_085b0142806202599c7fe3b329164a92397d8978207a37e79d70b8c52599e33e->leave($__internal_085b0142806202599c7fe3b329164a92397d8978207a37e79d70b8c52599e33e_prof);
-
-    }
-
-    public function block_javascripts($context, array $blocks = array())
-    {
-        $__internal_085b0142806202599c7fe3b329164a92397d8978207a37e79d70b8c52599e33e = $this->extensions["Symfony\\Bundle\\WebProfilerBundle\\Twig\\WebProfilerExtension"];
-        $__internal_085b0142806202599c7fe3b329164a92397d8978207a37e79d70b8c52599e33e->enter($__internal_085b0142806202599c7fe3b329164a92397d8978207a37e79d70b8c52599e33e_prof = new Twig_Profiler_Profile($this->getTemplateName(), "block", "javascripts"));
-
-        $__internal_319393461309892924ff6e74d6d6e64287df64b63545b994e100d4ab223aed02 = $this->extensions["Symfony\\Bridge\\Twig\\Extension\\ProfilerExtension"];
-        $__internal_319393461309892924ff6e74d6d6e64287df64b63545b994e100d4ab223aed02->enter($__internal_319393461309892924ff6e74d6d6e64287df64b63545b994e100d4ab223aed02_prof = new Twig_Profiler_Profile($this->getTemplateName(), "block", "javascripts"));
-
-        // line 41
-        echo "        <script src=\"https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js\"></script>
-        <script src=\"assets/js/main.js\"></script>
-
-    ";
+";
         
         $__internal_319393461309892924ff6e74d6d6e64287df64b63545b994e100d4ab223aed02->leave($__internal_319393461309892924ff6e74d6d6e64287df64b63545b994e100d4ab223aed02_prof);
 
@@ -175,7 +155,7 @@ class __TwigTemplate_160fe69a14322eaf1e45fd7997448c05c9c2779877ec7d2b5e73fea7651
 
     public function getDebugInfo()
     {
-        return array (  159 => 41,  141 => 40,  129 => 33,  124 => 31,  115 => 29,  108 => 27,  101 => 23,  92 => 16,  83 => 15,  70 => 7,  61 => 6,  49 => 46,  47 => 15,  41 => 11,  39 => 6,  32 => 1,);
+        return array (  133 => 33,  128 => 31,  119 => 29,  112 => 27,  105 => 23,  97 => 20,  91 => 16,  82 => 15,  69 => 7,  60 => 6,  48 => 40,  46 => 15,  40 => 11,  38 => 6,  31 => 1,);
     }
 
     public function getSourceContext()
@@ -199,7 +179,7 @@ class __TwigTemplate_160fe69a14322eaf1e45fd7997448c05c9c2779877ec7d2b5e73fea7651
     <div class=\"container\">
 
         <div class=\"nav\">
-            <a href=\"/registration\">Зареєструватися</a> <a href=\"/login\">Увійти</a>
+            <a href=\"{{ path('app_user_register') }}\">Registration </a> <a href=\"{{ path('app_user_login') }}\">Login</a>
         </div>
 
         <img alt=\"articleImg\" src=\"{{ img }}\"/>
@@ -218,12 +198,6 @@ class __TwigTemplate_160fe69a14322eaf1e45fd7997448c05c9c2779877ec7d2b5e73fea7651
 
     </div>
 
-
-    {% block javascripts %}
-        <script src=\"https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js\"></script>
-        <script src=\"assets/js/main.js\"></script>
-
-    {% endblock %}
 {% endblock %}
 </html>
 

@@ -31,6 +31,7 @@ h4:last-of-type{
 .nav a:hover{
     background: gainsboro;
 }
+
 /***    PAGE REGISTRATION /LOGIN  ***/
 .registration .container{
     height: 700px;
@@ -59,7 +60,7 @@ h4:last-of-type{
     float: right;
     margin-right: 25%;
 }
-.page-form button{
+.page-form .button{
     float: right;
     margin-top: 50px;
     width: 52%;
@@ -70,6 +71,8 @@ h4:last-of-type{
     text-transform: uppercase;
     border: 2px solid gainsboro;
 }
-.page-form button:hover{
+.page-form .button:hover{
     background: white;
 }
+
+

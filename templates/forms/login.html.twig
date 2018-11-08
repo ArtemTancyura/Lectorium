@@ -6,15 +6,20 @@
 
     <div class="container">
 
-        <h2>Радий знову тебе бачити</h2>
+        <h2>Hello!</h2>
 
-        <p>Пройди процедуру логінізації і нічого не зміниться, але ти нам важливий!</p>
+        <p>Log in and enjoy my website!</p>
 
-        {{ form(form) }}
+        <form action="{{ path("app_user_login") }}" method="post">
 
+            {{ form_widget(form) }}
 
-        <p> Не зареєстрований? </p>
-        <a href="/registration">На сторінку реєстрації</a> <a href="/home">Повернутися на головну</a>
+            <input type="submit" class="button" value="Login" /><br>
+
+        </form>
+
+        <p> More options </p>
+        <a href="{{ path('app_user_register') }}">Registration </a> <a href="{{ path('app_home_home') }}">Main page</a>
     </div>
 
 </div>
